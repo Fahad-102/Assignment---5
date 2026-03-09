@@ -78,7 +78,11 @@ document.getElementById("closeModalBtn").addEventListener("click",closeModal)
                 ${issue.description.substring(0,80)}...
                 </p>
 
-                <div class="badge badge-outline ${issue.label === "bug" ? "bg-red-100 text-red-500" : "bg-blue-100 text-blue-500"}">${issue.label}</div>
+               <div>
+  ${issue.labels && issue.labels.length > 0 
+      ? issue.labels.map(label => `<span class="badge badge-outline ${label === "bug" ? "bg-red-100 text-red-500" : "bg-blue-100 text-blue-500"}">${label}</span>`).join(" ")
+      : `<span class="badge badge-outline bg-gray-100 text-gray-500">No label</span>`}
+</div>
 
                 <hr class="mt-5 mb-2">
 
@@ -96,6 +100,11 @@ document.getElementById("closeModalBtn").addEventListener("click",closeModal)
 
 
       div.addEventListener("click",function(){
+
+         fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${issue.id}`)
+    .then(res => res.json())
+    .then(data => {
+         const singleIssue = data.data
 
 document.getElementById("modalTitle").innerText = issue.title
 document.getElementById("modalStatus").innerText = issue.status
@@ -134,6 +143,8 @@ const modal = document.getElementById("issueModal")
 modal.classList.remove("hidden")
 modal.classList.add("modal-open")
 
+})
+ .catch(err => console.error(err))
 })
         cardContainer.appendChild(div)
     });
@@ -185,16 +196,15 @@ fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
 
 // Search Bar
 
-const searchInput = document.getElementById("searchInput");
-
 searchInput.addEventListener("input", function() {
-    const query = searchInput.value.toLowerCase(); // case-insensitive search
+    const query = searchInput.value.trim()
+    if(!query){
+        displayIssues(allIssues)
+        return;
+    }
 
-    // filter issues by title or description
-    const filteredIssues = allIssues.filter(issue => 
-        issue.title.toLowerCase().includes(query) ||
-        issue.description.toLowerCase().includes(query)
-    );
-
-    displayIssues(filteredIssues);
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${query}`)
+    .then(res => res.json())
+    .then(data => displayIssues(data.data))
+    .catch(err => console.error(err))
 });
