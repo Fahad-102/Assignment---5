@@ -71,6 +71,42 @@
             </div>
         </div>
     </div> 
+  <!-- Modal Template -->
+<div id="issueModal" class="fixed inset-0 flex items-center justify-center bg-opacity-50 hidden z-50">
+    <div class="bg-white w-11/12 md:w-1/2 p-5 rounded-lg shadow-lg relative">
+        <h2 id="modalTitle" class="font-bold text-2xl mb-2">Fix broken image uploads</h2>
+
+        <div class="flex items-center gap-2 text-[12px] text-gray-600 mb-5">
+            <span id="modalStatus" class="flex bg-green-600 text-white rounded-2xl w-17 h-7 justify-center items-center">Opened</span>
+            <span><i class="text-[5px] pb-3 fa-solid fa-circle"></i></span>
+            <span id="modalAuthor">Opend by Fahim Ahmed</span>
+            <span><i class="text-[5px] pb-3 fa-solid fa-circle"></i></span>
+            <span id="modalDate">22/02/2026</span>
+        </div>
+
+        <div class="text-[12px] space-x-2 mb-5">
+            <span id="modalsTag1" class="text-red-500 outline-1 outline-red-300 rounded-2xl p-1 bg-red-100"><i class="fa-solid fa-bug"></i> BUG</span>
+            <span id="modalsTag2" class="text-yellow-700 outline-yellow-300 outline-1 rounded-2xl p-1 bg-yellow-100"><i class="fa-regular fa-life-ring"></i> HELP WANTED</span>
+        </div>
+
+        <p id="modalDescription" class="text-gray-600 mb-5">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior</p>
+
+        <div class="flex justify-around bg-gray-100 rounded-lg p-3 mb-5">
+            <div>
+                <p class="text-gray-600">Assignee:</p>
+                <p id="modalAssignee" class="font-semibold">Fahim Ahmed</p>
+            </div>
+            <div>
+                <p class="text-gray-600">Priority:</p>
+                <p id="modalPriority" class="bg-red-500 text-white rounded-2xl text-[12px] flex justify-center p-0.5">HIGH</p>
+            </div>
+        </div>
+
+        <div class="flex justify-end">
+            <button id="closeModalBtn" class="btn btn-primary">Close</button>
+        </div>
+    </div>
+</div>
   <script src="issue.js"></script>
 </body>
 </html>
