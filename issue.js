@@ -181,3 +181,20 @@ fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     console.error("Error fetching issues : " , err)
     cardContainer.innerHTML = `<p> Failed to load </p>`
 })
+
+
+// Search Bar
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("input", function() {
+    const query = searchInput.value.toLowerCase(); // case-insensitive search
+
+    // filter issues by title or description
+    const filteredIssues = allIssues.filter(issue => 
+        issue.title.toLowerCase().includes(query) ||
+        issue.description.toLowerCase().includes(query)
+    );
+
+    displayIssues(filteredIssues);
+});
