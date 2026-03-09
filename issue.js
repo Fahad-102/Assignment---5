@@ -92,6 +92,54 @@ document.getElementById("closeModalBtn").addEventListener("click",closeModal)
             </div>
         </div>
         `
+// Modal
+
+
+      div.addEventListener("click",function(){
+
+document.getElementById("modalTitle").innerText = issue.title
+document.getElementById("modalStatus").innerText = issue.status
+document.getElementById("modalAuthor").innerText = issue.author
+document.getElementById("modalDate").innerText = new Date(issue.createdAt).toLocaleDateString()
+document.getElementById("modalAssignee").innerText = issue.assignee || "Not assigned"
+document.getElementById("modalPriority").innerText = issue.priority.toUpperCase()
+document.getElementById("modalDescription").innerText = issue.description
+
+
+const modalPriority = document.getElementById("modalPriority")
+const modalStatus = document.getElementById("modalStatus")
+
+// status color
+if(modalStatus.innerText === "open"){
+    modalStatus.classList.remove("bg-purple-600")
+    modalStatus.classList.add("bg-green-600")
+}
+else{
+    modalStatus.classList.remove("bg-green-600")
+    modalStatus.classList.add("bg-purple-600")
+}
+
+// Priority color
+if(modalPriority.innerText === "HIGH"){
+    modalPriority.classList.remove("bg-yellow-500")
+    modalPriority.classList.add("bg-red-500")
+}
+else{
+    modalPriority.classList.remove("bg-red-500")
+    modalPriority.classList.add("bg-yellow-500")
+}
+
+const modal = document.getElementById("issueModal")
+
+modal.classList.remove("hidden")
+modal.classList.add("modal-open")
+
+})
+        cardContainer.appendChild(div)
+    });
+
+}
+
 
 // All
 allBtn.addEventListener("click",function(){
