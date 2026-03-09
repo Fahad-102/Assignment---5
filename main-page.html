@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Tracker Home</title>
+     <link rel="shortcut icon" href="/assets/github-logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hind+Siliguri:wght@300;400;500;600;700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <style>
+
+    *{
+        font-family: "Geist", sans-serif;
+    }
+    body{
+        background-color: rgb(233, 233, 233);
+    }
+   </style>
+</head>
+<body>
+    <section>
+
+        <div class="navbar bg-base-100 shadow-sm px-10 ">
+            <div class="flex flex-1 items-center px-5">
+        <img class="w-10 " src="/assets/github-logo.png" alt="GitHub logo">
+        <a class="btn btn-ghost text-xl">GitHub Issues Tracker</a>
+    
+  </div>
+  <div class="relative flex gap-2">
+    <span class="absolute z-20 p-2.5">
+        <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
+    </span>
+    <input  id="searchInput" type="text" placeholder=" Search issues.... " class="input input-bordered w-24 md:w-auto pl-8" />
+    <div class="dropdown dropdown-end">
+        <div class="">
+            <div class="btn btn-primary "> + New Issue </div>
+        </div>
+      </div>
+    </div>
+</div>
+</section>
+<section >
+    <div class="bg-white w-9/12 mx-auto p-2 m-5 rounded ">
+            <div id="allBtn" class="btn bg-gray-300 w-20">All</div>
+            <div id="openBtn" class="btn bg-gray-300 w-20">Open</div>
+            <div id="closedBtn" class="btn bg-gray-300 w-20">Closed</div>
+    </div>
+    <div class=" flex justify-between items-center px-5 bg-white w-9/12 mx-auto rounded-t-md">
+        <div class="flex items-center gap-2 p-2 ">
+            <img class="bg-gray-200 rounded-4xl p-1 " src="/assets/Aperture.png" alt="Aperture">
+            <div>
+                <h2 id="issueContainer"> 0 issues</h2>
+                <p>Track and manage your project issues</p>
+            </div>
+        </div>
+        <div>
+            <span><i class="fa-solid fa-circle text-green-500"></i> open</span> 
+            <span><i class="fa-solid fa-circle text-violet-500 "></i> closed</span>
+        </div>
+    </div>
+    <div class="bg-white w-9/12 mx-auto">
+        <hr class="text-gray-300 ">
+
+        <div id="cardContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2  ">
+
+        </div>
+            </div>
+        </div>
+    </div> 
+  <script src="issue.js"></script>
+</body>
+</html>
